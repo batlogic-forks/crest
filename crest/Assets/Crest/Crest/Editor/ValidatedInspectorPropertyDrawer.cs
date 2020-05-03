@@ -4,7 +4,7 @@ namespace Crest
     using UnityEditor;
     using UnityEngine;
 
-    [CustomPropertyDrawer(typeof(ValidatedInspector))]
+    [CustomPropertyDrawer(typeof(ValidatedInspectorProperty))]
     public class ValidatedInspectorPropertyDrawer : PropertyDrawer
     {
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)

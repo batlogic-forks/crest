@@ -5,9 +5,7 @@ namespace Crest
     using UnityEditor;
     using UnityEngine;
 
-    using System;
-
-    // This class is part of function proposal
+    // This class is part of Function proposal
     public static class ValidatedHelper
     {
         // This won't work cos we want to combine strings for help box but not for debug log. So we would have to have a 
@@ -18,6 +16,7 @@ namespace Crest
         {
             switch (type)
             {
+                // NOTE: this is incomplete
                 case MessageType.Warning: Debug.LogWarning(message); break;
                 case MessageType.Error: Debug.LogError(message); break;
                 default: Debug.Log(message); break;
@@ -33,13 +32,15 @@ namespace Crest
 
     public interface IValidatedInspector
     {
-        // Basic proposal. This interface could be improved not to use pass throughs
+        // Basic proposal. This interface could be improved not to use out parameters
         void OnInspectorValidation(out bool showMessage, out string message, out MessageType messageType);
 
         // Function proposal
         void OnInspectorValidation(ValidatedHelper.ShowMessage function);
 
         // Advanced proposal so we can use same validation code for HelpBox and DebugLog
+        // We would rename this to Validate
+        // And pass through the OceanRenderer similar to OceanDepthCache?
         void OnInspectorValidation(List<ValidatedMessage> messages);
     }
 

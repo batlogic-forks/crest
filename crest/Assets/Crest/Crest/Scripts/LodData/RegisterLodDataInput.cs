@@ -46,7 +46,9 @@ namespace Crest
         static DuplicateKeyComparer<int> s_comparer = new DuplicateKeyComparer<int>();
         static Dictionary<Type, OceanInput> s_registrar = new Dictionary<Type, OceanInput>();
 
-        // public ValidatedInspector _information;
+        // // This is required if we wanted to target this component using the property drawer approach rather than a
+        // // custom inspector.
+        // public ValidatedInspectorProperty _information;
 
         public static OceanInput GetRegistrar(Type lodDataMgrType)
         {

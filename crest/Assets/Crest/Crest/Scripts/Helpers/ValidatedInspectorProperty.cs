@@ -7,5 +7,5 @@ namespace Crest
     // help boxes.
 
     [Serializable]
-    public struct ValidatedInspector {}
+    public struct ValidatedInspectorProperty {}
 }
