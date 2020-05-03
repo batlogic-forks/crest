@@ -111,6 +111,13 @@ namespace Crest
             messages.Add(new ValidatedMessage() { message = "Info 1", type = UnityEditor.MessageType.Info });
         }
 
+        // Function proposal
+        public virtual void OnInspectorValidation(ValidatedHelper.ShowMessage showMessage)
+        {
+            // This is for demonstration purposes. But it would have proper validation here and used by the logger validator too.
+            showMessage("Warning 1\nWarning 2", UnityEditor.MessageType.Warning);
+        }
+
         public int MaterialCount => _materials.Length;
         public Material GetMaterial(int index) => _materials[index];
 

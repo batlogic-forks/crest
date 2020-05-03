@@ -20,6 +20,10 @@ namespace Crest
             //     EditorGUILayout.Space();
             // }
 
+
+            // Function Proposal
+            // target.OnInspectorValidation(ValidatedHelper.HelpBox);
+
             // The following is the more advanced proposal. It would allow use to reuse validation code.
 
             var messageTypes = Enum.GetValues(typeof(MessageType));
