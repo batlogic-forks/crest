@@ -21,7 +21,7 @@ namespace Crest
             // }
 
 
-            // Function Proposal
+            // Function Proposal. Doesn't really work
             // target.OnInspectorValidation(ValidatedHelper.HelpBox);
 
             // The following is the more advanced proposal. It would allow use to reuse validation code.
