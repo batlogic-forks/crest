@@ -35,7 +35,7 @@ namespace Crest
     /// <summary>
     /// Base class for scripts that register input to the various LOD data types.
     /// </summary>
-    public abstract class RegisterLodDataInputBase : MonoBehaviour, ILodDataInput
+    public abstract class RegisterLodDataInputBase : MonoBehaviour, ILodDataInput, IValidatedInspector
     {
         public abstract float Wavelength { get; }
 
@@ -45,6 +45,8 @@ namespace Crest
 
         static DuplicateKeyComparer<int> s_comparer = new DuplicateKeyComparer<int>();
         static Dictionary<Type, OceanInput> s_registrar = new Dictionary<Type, OceanInput>();
+
+        // public ValidatedInspector _information;
 
         public static OceanInput GetRegistrar(Type lodDataMgrType)
         {
@@ -80,6 +82,33 @@ namespace Crest
 
                 buf.DrawRenderer(_renderer, _materials[isTransition]);
             }
+        }
+
+        // Simple proposal. This could be improved.
+        public void OnInspectorValidation(out bool showMessage, out string message, out UnityEditor.MessageType messageType)
+        {
+            var renderer = GetComponent<MeshRenderer>();
+            if (!renderer.sharedMaterial)
+            {
+                showMessage = true;
+                message = "1. Renderer must have a material assigned";
+                messageType = UnityEditor.MessageType.Error;
+                return;
+            }
+
+            showMessage = false;
+            message = "";
+            messageType = UnityEditor.MessageType.None;
+        }
+
+        // Advanced proposal.
+        public virtual void OnInspectorValidation(List<ValidatedMessage> messages)
+        {
+            // This is for demonstration purposes. But it would have proper validation here and used by the logger validator too.
+            messages.Add(new ValidatedMessage() { message = "Error 1", type = UnityEditor.MessageType.Error });
+            messages.Add(new ValidatedMessage() { message = "Warning 1", type = UnityEditor.MessageType.Warning });
+            messages.Add(new ValidatedMessage() { message = "Warning 2", type = UnityEditor.MessageType.Warning });
+            messages.Add(new ValidatedMessage() { message = "Info 1", type = UnityEditor.MessageType.Info });
         }
 
         public int MaterialCount => _materials.Length;
