@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using Crest;
 
-public sealed class BoatControlPlayer : BoatControl
+public sealed class BoatControlPlayerLegacy : BoatControl
 {
     [Tooltip("The input axis name for steering."), SerializeField]
     string _steerInputAxisName = "Horizontal";
